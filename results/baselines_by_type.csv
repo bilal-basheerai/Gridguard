@@ -1,0 +1,11 @@
+detector,type,events,event_recall,median_delay_h
+Rolling z-score,drift,55,0.6727,21.0
+Rolling z-score,flatline,129,0.0155,0.0
+Rolling z-score,scale_down,93,0.4839,140.0
+Rolling z-score,spike,137,0.6277,0.0
+Rolling z-score,zero_out,126,0.0,
+Isolation Forest,drift,55,0.4,12.25
+Isolation Forest,flatline,129,0.0853,4.5
+Isolation Forest,scale_down,93,0.1505,56.25
+Isolation Forest,spike,137,0.4964,0.0
+Isolation Forest,zero_out,126,0.0,
