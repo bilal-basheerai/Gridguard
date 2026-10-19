@@ -1,4 +1,4 @@
-# GridGuard
+# GridGuard [Day 1]
 
 AI-based anomaly detection for smart meter data, with physics-informed checks. A portfolio project at the intersection of renewable energy, machine learning and cybersecurity.
 
@@ -22,6 +22,28 @@ Sample used: 300 households with complete readings for all of 2013 (17,520 readi
 - [ ] Day 4: physics-informed rules, hybrid detector, ablation study, explainability
 - [ ] Day 5: Streamlit dashboard, write-up, demo
 
+## Results so far: baseline detectors (Day 2)
+
+Setup: detectors are fitted on 210 households and tested on 90 unseen households. Normal behaviour is learned from January to September; 540 synthetic anomalies (6 per meter) are injected only in October to December. Each detector's alarm threshold is the 99th percentile of its scores on clean training data, so every detector has the same false-alarm budget and no labels are used for tuning.
+
+| Detector | Event recall | Median delay (h) | False alarms per meter-week | PR-AUC |
+|---|---|---|---|---|
+| Rolling z-score | 31.5% | 0.5 | 1.81 | 0.191 |
+| Isolation Forest | 21.3% | 0.0 | 1.34 | 0.222 |
+
+Event recall by anomaly type:
+
+| Anomaly type | Events | Rolling z-score | Isolation Forest |
+|---|---|---|---|
+| Drift | 55 | 67.3% | 40.0% |
+| Spike | 137 | 62.8% | 49.6% |
+| Scale-down | 93 | 48.4% | 15.1% |
+| Flat-line | 129 | 1.6% | 8.5% |
+| Zero-out | 126 | 0.0% | 0.0% |
+
+Finding: both baselines catch gradual and extreme changes but are almost blind to zero-outs and flat-lines, because a single zero or constant reading looks normal (zero is common at night). Detecting these needs evidence accumulated over hours. The LSTM autoencoder (Day 3) and physics-based rules (Day 4) target exactly these cases.
+
+![Example detections](results/example_detections.png)
 ## Project structure
 
 ```
