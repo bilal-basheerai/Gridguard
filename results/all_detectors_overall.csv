@@ -1,0 +1,4 @@
+detector,precision,recall,f1,pr_auc,event_recall,median_delay_h,false_alarms_per_meter_week
+Rolling z-score,0.1126,0.0061,0.0115,0.1909,0.3148,0.5,1.81
+Isolation Forest,0.1533,0.011,0.0205,0.2216,0.213,0.0,1.3349
+LSTM autoencoder,0.0533,0.0046,0.0084,0.1455,0.113,22.5,1.1464

@@ -1,0 +1,6 @@
+type,events,median_visibility,share_below_10pct,share_below_25pct
+drift,55,0.2657,0.0,0.4545
+flatline,129,0.6618,0.031,0.0853
+scale_down,93,0.5131,0.0108,0.0323
+spike,137,4.9475,0.0219,0.0219
+zero_out,126,1.0179,0.0079,0.0079
