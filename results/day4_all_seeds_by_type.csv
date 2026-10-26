@@ -1,0 +1,316 @@
+seed,test_set,detector,type,events,event_recall,median_delay_h
+42,standard,Rolling z-score,drift,55,0.6727,21.0
+42,standard,Rolling z-score,flatline,129,0.0155,0.0
+42,standard,Rolling z-score,scale_down,93,0.4839,140.0
+42,standard,Rolling z-score,spike,137,0.6277,0.0
+42,standard,Rolling z-score,zero_out,126,0.0,
+42,standard,Isolation Forest,drift,55,0.4,12.25
+42,standard,Isolation Forest,flatline,129,0.0853,4.5
+42,standard,Isolation Forest,scale_down,93,0.1505,56.25
+42,standard,Isolation Forest,spike,137,0.4964,0.0
+42,standard,Isolation Forest,zero_out,126,0.0,
+42,standard,Zero-run rule,drift,55,0.0,
+42,standard,Zero-run rule,flatline,129,0.0078,0.0
+42,standard,Zero-run rule,scale_down,93,0.0108,7.5
+42,standard,Zero-run rule,spike,137,0.0146,0.0
+42,standard,Zero-run rule,zero_out,126,0.8333,10.0
+42,standard,Stuck-reading rule,drift,55,0.0,
+42,standard,Stuck-reading rule,flatline,129,0.9922,3.0
+42,standard,Stuck-reading rule,scale_down,93,0.0,
+42,standard,Stuck-reading rule,spike,137,0.0,
+42,standard,Stuck-reading rule,zero_out,126,0.0,
+42,standard,Sustained-low rule,drift,55,0.0,
+42,standard,Sustained-low rule,flatline,129,0.0,
+42,standard,Sustained-low rule,scale_down,93,0.0,
+42,standard,Sustained-low rule,spike,137,0.0,
+42,standard,Sustained-low rule,zero_out,126,0.0,
+42,standard,Low-variability rule,drift,55,0.0,
+42,standard,Low-variability rule,flatline,129,0.0,
+42,standard,Low-variability rule,scale_down,93,0.0,
+42,standard,Low-variability rule,spike,137,0.0,
+42,standard,Low-variability rule,zero_out,126,0.0,
+42,standard,Rules only,drift,55,0.0,
+42,standard,Rules only,flatline,129,1.0,3.0
+42,standard,Rules only,scale_down,93,0.0108,7.5
+42,standard,Rules only,spike,137,0.0146,0.0
+42,standard,Rules only,zero_out,126,0.8333,10.0
+42,standard,Hybrid: z-score + rules,drift,55,0.6727,21.0
+42,standard,Hybrid: z-score + rules,flatline,129,1.0,3.0
+42,standard,Hybrid: z-score + rules,scale_down,93,0.4946,137.75
+42,standard,Hybrid: z-score + rules,spike,137,0.6423,0.0
+42,standard,Hybrid: z-score + rules,zero_out,126,0.8333,10.0
+42,standard,Hybrid: Isolation Forest + rules,drift,55,0.4,12.25
+42,standard,Hybrid: Isolation Forest + rules,flatline,129,1.0,3.0
+42,standard,Hybrid: Isolation Forest + rules,scale_down,93,0.1613,44.0
+42,standard,Hybrid: Isolation Forest + rules,spike,137,0.5109,0.0
+42,standard,Hybrid: Isolation Forest + rules,zero_out,126,0.8333,10.0
+42,hard,Rolling z-score,jitter_flat,181,0.0,
+42,hard,Rolling z-score,near_zero,179,0.0,
+42,hard,Isolation Forest,jitter_flat,181,0.0055,19.0
+42,hard,Isolation Forest,near_zero,179,0.0168,0.0
+42,hard,Zero-run rule,jitter_flat,181,0.0,
+42,hard,Zero-run rule,near_zero,179,0.0223,3.5
+42,hard,Stuck-reading rule,jitter_flat,181,0.0,
+42,hard,Stuck-reading rule,near_zero,179,0.0056,4.0
+42,hard,Sustained-low rule,jitter_flat,181,0.0,
+42,hard,Sustained-low rule,near_zero,179,0.0,
+42,hard,Low-variability rule,jitter_flat,181,0.0,
+42,hard,Low-variability rule,near_zero,179,0.0,
+42,hard,Rules only,jitter_flat,181,0.0,
+42,hard,Rules only,near_zero,179,0.0223,2.0
+42,hard,Hybrid: z-score + rules,jitter_flat,181,0.0,
+42,hard,Hybrid: z-score + rules,near_zero,179,0.0223,2.0
+42,hard,Hybrid: Isolation Forest + rules,jitter_flat,181,0.0055,19.0
+42,hard,Hybrid: Isolation Forest + rules,near_zero,179,0.0391,0.0
+1,standard,Rolling z-score,drift,69,0.5942,28.0
+1,standard,Rolling z-score,flatline,117,0.0085,0.0
+1,standard,Rolling z-score,scale_down,95,0.5053,161.25
+1,standard,Rolling z-score,spike,138,0.6087,0.0
+1,standard,Rolling z-score,zero_out,121,0.0083,0.0
+1,standard,Isolation Forest,drift,69,0.2319,24.5
+1,standard,Isolation Forest,flatline,117,0.0769,5.5
+1,standard,Isolation Forest,scale_down,95,0.1263,142.75
+1,standard,Isolation Forest,spike,138,0.5725,0.0
+1,standard,Isolation Forest,zero_out,121,0.0,
+1,standard,Zero-run rule,drift,69,0.0435,0.0
+1,standard,Zero-run rule,flatline,117,0.0171,0.0
+1,standard,Zero-run rule,scale_down,95,0.0316,0.0
+1,standard,Zero-run rule,spike,138,0.0362,0.0
+1,standard,Zero-run rule,zero_out,121,1.0,2.5
+1,standard,Stuck-reading rule,drift,69,0.0,
+1,standard,Stuck-reading rule,flatline,117,0.9829,3.5
+1,standard,Stuck-reading rule,scale_down,95,0.0105,116.5
+1,standard,Stuck-reading rule,spike,138,0.0,
+1,standard,Stuck-reading rule,zero_out,121,0.0,
+1,standard,Sustained-low rule,drift,69,0.0435,0.0
+1,standard,Sustained-low rule,flatline,117,0.0171,0.0
+1,standard,Sustained-low rule,scale_down,95,0.0316,0.0
+1,standard,Sustained-low rule,spike,138,0.0217,0.0
+1,standard,Sustained-low rule,zero_out,121,1.0,5.5
+1,standard,Low-variability rule,drift,69,0.0435,0.0
+1,standard,Low-variability rule,flatline,117,1.0,5.5
+1,standard,Low-variability rule,scale_down,95,0.0316,0.0
+1,standard,Low-variability rule,spike,138,0.0217,0.0
+1,standard,Low-variability rule,zero_out,121,1.0,5.5
+1,standard,Rules only,drift,69,0.0435,0.0
+1,standard,Rules only,flatline,117,1.0,3.5
+1,standard,Rules only,scale_down,95,0.0421,58.25
+1,standard,Rules only,spike,138,0.0362,0.0
+1,standard,Rules only,zero_out,121,1.0,2.5
+1,standard,Hybrid: z-score + rules,drift,69,0.6087,25.75
+1,standard,Hybrid: z-score + rules,flatline,117,1.0,3.5
+1,standard,Hybrid: z-score + rules,scale_down,95,0.5368,160.0
+1,standard,Hybrid: z-score + rules,spike,138,0.6449,0.0
+1,standard,Hybrid: z-score + rules,zero_out,121,1.0,2.5
+1,standard,Hybrid: Isolation Forest + rules,drift,69,0.2609,22.0
+1,standard,Hybrid: Isolation Forest + rules,flatline,117,1.0,3.5
+1,standard,Hybrid: Isolation Forest + rules,scale_down,95,0.1579,135.5
+1,standard,Hybrid: Isolation Forest + rules,spike,138,0.6014,0.0
+1,standard,Hybrid: Isolation Forest + rules,zero_out,121,1.0,2.5
+1,hard,Rolling z-score,jitter_flat,159,0.0,
+1,hard,Rolling z-score,near_zero,201,0.005,0.0
+1,hard,Isolation Forest,jitter_flat,159,0.0314,0.5
+1,hard,Isolation Forest,near_zero,201,0.005,0.0
+1,hard,Zero-run rule,jitter_flat,159,0.0252,0.0
+1,hard,Zero-run rule,near_zero,201,0.0149,0.0
+1,hard,Stuck-reading rule,jitter_flat,159,0.0,
+1,hard,Stuck-reading rule,near_zero,201,0.01,16.5
+1,hard,Sustained-low rule,jitter_flat,159,0.0252,0.0
+1,hard,Sustained-low rule,near_zero,201,0.2687,11.25
+1,hard,Low-variability rule,jitter_flat,159,0.0252,0.0
+1,hard,Low-variability rule,near_zero,201,0.0249,7.5
+1,hard,Rules only,jitter_flat,159,0.0252,0.0
+1,hard,Rules only,near_zero,201,0.2687,11.25
+1,hard,Hybrid: z-score + rules,jitter_flat,159,0.0252,0.0
+1,hard,Hybrid: z-score + rules,near_zero,201,0.2736,11.0
+1,hard,Hybrid: Isolation Forest + rules,jitter_flat,159,0.0566,0.0
+1,hard,Hybrid: Isolation Forest + rules,near_zero,201,0.2736,11.0
+2,standard,Rolling z-score,drift,89,0.6404,39.5
+2,standard,Rolling z-score,flatline,117,0.0,
+2,standard,Rolling z-score,scale_down,97,0.433,149.75
+2,standard,Rolling z-score,spike,130,0.6385,0.0
+2,standard,Rolling z-score,zero_out,107,0.0,
+2,standard,Isolation Forest,drift,89,0.4045,27.25
+2,standard,Isolation Forest,flatline,117,0.0427,4.5
+2,standard,Isolation Forest,scale_down,97,0.0825,105.75
+2,standard,Isolation Forest,spike,130,0.5615,0.0
+2,standard,Isolation Forest,zero_out,107,0.0,
+2,standard,Zero-run rule,drift,89,0.0112,0.0
+2,standard,Zero-run rule,flatline,117,0.0085,0.0
+2,standard,Zero-run rule,scale_down,97,0.0206,20.25
+2,standard,Zero-run rule,spike,130,0.0077,0.0
+2,standard,Zero-run rule,zero_out,107,1.0,2.5
+2,standard,Stuck-reading rule,drift,89,0.0,
+2,standard,Stuck-reading rule,flatline,117,0.9915,3.0
+2,standard,Stuck-reading rule,scale_down,97,0.0103,50.5
+2,standard,Stuck-reading rule,spike,130,0.0,
+2,standard,Stuck-reading rule,zero_out,107,0.0,
+2,standard,Sustained-low rule,drift,89,0.0112,0.0
+2,standard,Sustained-low rule,flatline,117,0.0085,0.0
+2,standard,Sustained-low rule,scale_down,97,0.0206,21.75
+2,standard,Sustained-low rule,spike,130,0.0077,0.0
+2,standard,Sustained-low rule,zero_out,107,1.0,5.5
+2,standard,Low-variability rule,drift,89,0.0337,6.5
+2,standard,Low-variability rule,flatline,117,1.0,5.5
+2,standard,Low-variability rule,scale_down,97,0.0515,43.5
+2,standard,Low-variability rule,spike,130,0.0077,0.0
+2,standard,Low-variability rule,zero_out,107,1.0,5.5
+2,standard,Rules only,drift,89,0.0337,6.5
+2,standard,Rules only,flatline,117,1.0,3.0
+2,standard,Rules only,scale_down,97,0.0619,45.0
+2,standard,Rules only,spike,130,0.0077,0.0
+2,standard,Rules only,zero_out,107,1.0,2.5
+2,standard,Hybrid: z-score + rules,drift,89,0.6629,39.0
+2,standard,Hybrid: z-score + rules,flatline,117,1.0,3.0
+2,standard,Hybrid: z-score + rules,scale_down,97,0.4742,141.5
+2,standard,Hybrid: z-score + rules,spike,130,0.6462,0.0
+2,standard,Hybrid: z-score + rules,zero_out,107,1.0,2.5
+2,standard,Hybrid: Isolation Forest + rules,drift,89,0.427,27.25
+2,standard,Hybrid: Isolation Forest + rules,flatline,117,1.0,3.0
+2,standard,Hybrid: Isolation Forest + rules,scale_down,97,0.134,81.0
+2,standard,Hybrid: Isolation Forest + rules,spike,130,0.5692,0.0
+2,standard,Hybrid: Isolation Forest + rules,zero_out,107,1.0,2.5
+2,hard,Rolling z-score,jitter_flat,166,0.006,0.0
+2,hard,Rolling z-score,near_zero,194,0.0,
+2,hard,Isolation Forest,jitter_flat,166,0.0,
+2,hard,Isolation Forest,near_zero,194,0.0,
+2,hard,Zero-run rule,jitter_flat,166,0.0,
+2,hard,Zero-run rule,near_zero,194,0.0155,0.0
+2,hard,Stuck-reading rule,jitter_flat,166,0.0,
+2,hard,Stuck-reading rule,near_zero,194,0.0052,12.0
+2,hard,Sustained-low rule,jitter_flat,166,0.0,
+2,hard,Sustained-low rule,near_zero,194,0.5567,7.5
+2,hard,Low-variability rule,jitter_flat,166,0.012,31.75
+2,hard,Low-variability rule,near_zero,194,0.5052,9.0
+2,hard,Rules only,jitter_flat,166,0.012,31.75
+2,hard,Rules only,near_zero,194,0.6443,8.5
+2,hard,Hybrid: z-score + rules,jitter_flat,166,0.0181,24.5
+2,hard,Hybrid: z-score + rules,near_zero,194,0.6443,8.5
+2,hard,Hybrid: Isolation Forest + rules,jitter_flat,166,0.012,31.75
+2,hard,Hybrid: Isolation Forest + rules,near_zero,194,0.6443,8.5
+3,standard,Rolling z-score,drift,81,0.7654,33.75
+3,standard,Rolling z-score,flatline,107,0.0,
+3,standard,Rolling z-score,scale_down,98,0.551,132.0
+3,standard,Rolling z-score,spike,118,0.6271,0.0
+3,standard,Rolling z-score,zero_out,136,0.0,
+3,standard,Isolation Forest,drift,81,0.4815,30.5
+3,standard,Isolation Forest,flatline,107,0.0467,5.5
+3,standard,Isolation Forest,scale_down,98,0.0612,62.75
+3,standard,Isolation Forest,spike,118,0.5424,0.0
+3,standard,Isolation Forest,zero_out,136,0.0,
+3,standard,Zero-run rule,drift,81,0.0123,17.0
+3,standard,Zero-run rule,flatline,107,0.0,
+3,standard,Zero-run rule,scale_down,98,0.0102,3.5
+3,standard,Zero-run rule,spike,118,0.0,
+3,standard,Zero-run rule,zero_out,136,1.0,2.5
+3,standard,Stuck-reading rule,drift,81,0.0,
+3,standard,Stuck-reading rule,flatline,107,1.0,3.0
+3,standard,Stuck-reading rule,scale_down,98,0.0,
+3,standard,Stuck-reading rule,spike,118,0.0,
+3,standard,Stuck-reading rule,zero_out,136,0.0,
+3,standard,Sustained-low rule,drift,81,0.0,
+3,standard,Sustained-low rule,flatline,107,0.0,
+3,standard,Sustained-low rule,scale_down,98,0.0,
+3,standard,Sustained-low rule,spike,118,0.0,
+3,standard,Sustained-low rule,zero_out,136,0.0,
+3,standard,Low-variability rule,drift,81,0.0123,43.5
+3,standard,Low-variability rule,flatline,107,1.0,5.5
+3,standard,Low-variability rule,scale_down,98,0.0,
+3,standard,Low-variability rule,spike,118,0.0,
+3,standard,Low-variability rule,zero_out,136,1.0,5.5
+3,standard,Rules only,drift,81,0.0123,17.0
+3,standard,Rules only,flatline,107,1.0,3.0
+3,standard,Rules only,scale_down,98,0.0102,3.5
+3,standard,Rules only,spike,118,0.0,
+3,standard,Rules only,zero_out,136,1.0,2.5
+3,standard,Hybrid: z-score + rules,drift,81,0.7778,33.5
+3,standard,Hybrid: z-score + rules,flatline,107,1.0,3.0
+3,standard,Hybrid: z-score + rules,scale_down,98,0.5612,128.5
+3,standard,Hybrid: z-score + rules,spike,118,0.6271,0.0
+3,standard,Hybrid: z-score + rules,zero_out,136,1.0,2.5
+3,standard,Hybrid: Isolation Forest + rules,drift,81,0.4938,29.75
+3,standard,Hybrid: Isolation Forest + rules,flatline,107,1.0,3.0
+3,standard,Hybrid: Isolation Forest + rules,scale_down,98,0.0714,51.0
+3,standard,Hybrid: Isolation Forest + rules,spike,118,0.5424,0.0
+3,standard,Hybrid: Isolation Forest + rules,zero_out,136,1.0,2.5
+3,hard,Rolling z-score,jitter_flat,193,0.0,
+3,hard,Rolling z-score,near_zero,167,0.006,0.0
+3,hard,Isolation Forest,jitter_flat,193,0.0,
+3,hard,Isolation Forest,near_zero,167,0.0,
+3,hard,Zero-run rule,jitter_flat,193,0.0,
+3,hard,Zero-run rule,near_zero,167,0.018,1.5
+3,hard,Stuck-reading rule,jitter_flat,193,0.0,
+3,hard,Stuck-reading rule,near_zero,167,0.0,
+3,hard,Sustained-low rule,jitter_flat,193,0.0,
+3,hard,Sustained-low rule,near_zero,167,0.0,
+3,hard,Low-variability rule,jitter_flat,193,0.0,
+3,hard,Low-variability rule,near_zero,167,0.0,
+3,hard,Rules only,jitter_flat,193,0.0,
+3,hard,Rules only,near_zero,167,0.018,1.5
+3,hard,Hybrid: z-score + rules,jitter_flat,193,0.0,
+3,hard,Hybrid: z-score + rules,near_zero,167,0.024,1.25
+3,hard,Hybrid: Isolation Forest + rules,jitter_flat,193,0.0,
+3,hard,Hybrid: Isolation Forest + rules,near_zero,167,0.018,1.5
+4,standard,Rolling z-score,drift,85,0.6824,31.25
+4,standard,Rolling z-score,flatline,125,0.0,
+4,standard,Rolling z-score,scale_down,86,0.4419,156.75
+4,standard,Rolling z-score,spike,128,0.6172,0.0
+4,standard,Rolling z-score,zero_out,116,0.0086,0.0
+4,standard,Isolation Forest,drift,85,0.4,28.25
+4,standard,Isolation Forest,flatline,125,0.064,11.5
+4,standard,Isolation Forest,scale_down,86,0.0814,51.0
+4,standard,Isolation Forest,spike,128,0.5859,0.0
+4,standard,Isolation Forest,zero_out,116,0.0086,0.0
+4,standard,Zero-run rule,drift,85,0.0118,4.0
+4,standard,Zero-run rule,flatline,125,0.016,1.25
+4,standard,Zero-run rule,scale_down,86,0.0,
+4,standard,Zero-run rule,spike,128,0.0,
+4,standard,Zero-run rule,zero_out,116,1.0,2.5
+4,standard,Stuck-reading rule,drift,85,0.0,
+4,standard,Stuck-reading rule,flatline,125,0.984,3.0
+4,standard,Stuck-reading rule,scale_down,86,0.0349,49.5
+4,standard,Stuck-reading rule,spike,128,0.0,
+4,standard,Stuck-reading rule,zero_out,116,0.0,
+4,standard,Sustained-low rule,drift,85,0.0706,131.75
+4,standard,Sustained-low rule,flatline,125,0.04,5.5
+4,standard,Sustained-low rule,scale_down,86,0.1047,31.5
+4,standard,Sustained-low rule,spike,128,0.0078,0.0
+4,standard,Sustained-low rule,zero_out,116,1.0,5.5
+4,standard,Low-variability rule,drift,85,0.0,
+4,standard,Low-variability rule,flatline,125,1.0,5.5
+4,standard,Low-variability rule,scale_down,86,0.0465,162.0
+4,standard,Low-variability rule,spike,128,0.0,
+4,standard,Low-variability rule,zero_out,116,1.0,5.5
+4,standard,Rules only,drift,85,0.0706,130.25
+4,standard,Rules only,flatline,125,1.0,3.0
+4,standard,Rules only,scale_down,86,0.1512,49.5
+4,standard,Rules only,spike,128,0.0078,0.0
+4,standard,Rules only,zero_out,116,1.0,2.5
+4,standard,Hybrid: z-score + rules,drift,85,0.7294,34.75
+4,standard,Hybrid: z-score + rules,flatline,125,1.0,3.0
+4,standard,Hybrid: z-score + rules,scale_down,86,0.5116,115.25
+4,standard,Hybrid: z-score + rules,spike,128,0.625,0.0
+4,standard,Hybrid: z-score + rules,zero_out,116,1.0,2.5
+4,standard,Hybrid: Isolation Forest + rules,drift,85,0.4588,30.0
+4,standard,Hybrid: Isolation Forest + rules,flatline,125,1.0,3.0
+4,standard,Hybrid: Isolation Forest + rules,scale_down,86,0.2326,50.75
+4,standard,Hybrid: Isolation Forest + rules,spike,128,0.5938,0.0
+4,standard,Hybrid: Isolation Forest + rules,zero_out,116,1.0,2.5
+4,hard,Rolling z-score,jitter_flat,176,0.0057,0.0
+4,hard,Rolling z-score,near_zero,184,0.0,
+4,hard,Isolation Forest,jitter_flat,176,0.0341,8.0
+4,hard,Isolation Forest,near_zero,184,0.0054,0.0
+4,hard,Zero-run rule,jitter_flat,176,0.0114,0.0
+4,hard,Zero-run rule,near_zero,184,0.0,
+4,hard,Stuck-reading rule,jitter_flat,176,0.0,
+4,hard,Stuck-reading rule,near_zero,184,0.0054,17.5
+4,hard,Sustained-low rule,jitter_flat,176,0.0341,0.0
+4,hard,Sustained-low rule,near_zero,184,0.9076,5.5
+4,hard,Low-variability rule,jitter_flat,176,0.0284,0.0
+4,hard,Low-variability rule,near_zero,184,0.2391,8.0
+4,hard,Rules only,jitter_flat,176,0.0341,0.0
+4,hard,Rules only,near_zero,184,0.9076,5.5
+4,hard,Hybrid: z-score + rules,jitter_flat,176,0.0398,0.0
+4,hard,Hybrid: z-score + rules,near_zero,184,0.9076,5.5
+4,hard,Hybrid: Isolation Forest + rules,jitter_flat,176,0.0682,3.25
+4,hard,Hybrid: Isolation Forest + rules,near_zero,184,0.913,5.5

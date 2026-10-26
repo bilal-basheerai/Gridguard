@@ -1,0 +1,5 @@
+quantile,detector,precision,recall,f1,pr_auc,event_recall,median_delay_h,false_alarms_per_meter_week
+0.98,Hybrid: z-score + rules,0.5268,0.1495,0.2329,0.3513,0.8222,3.0,3.101
+0.99,Hybrid: z-score + rules,0.6269,0.1456,0.2364,0.3712,0.75,3.0,1.8337
+0.995,Hybrid: z-score + rules,0.6884,0.1433,0.2372,0.3847,0.6722,3.0,1.1176
+0.999,Hybrid: z-score + rules,0.7574,0.141,0.2377,0.4034,0.5611,3.0,0.317
