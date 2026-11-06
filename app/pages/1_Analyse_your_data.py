@@ -1,33 +1,33 @@
 """Analyse your own data: upload half-hourly smart meter readings and get alerts with reasons."""
- 
+
 import io
 import sys
 from pathlib import Path
- 
+
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
- 
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))   # repo root, so `src` imports work
- 
+
 from src.engine import (MIN_HISTORY_DAYS, WARMUP_STEPS, GridGuard, prepare,  # noqa: E402
                         quality_report, self_benchmark)
 from src.loaders import wide_from_columns, wide_from_long  # noqa: E402
 from src.simulate import inject_anomalies  # noqa: E402
- 
+
 MAX_METERS = 200
 WIDE = "Wide: one timestamp column, one column per meter"
 LONG = "Long: one row per reading (timestamp, meter, value)"
- 
+
 st.set_page_config(page_title="Analyse your data - GridGuard", layout="wide")
- 
- 
+
+
 @st.cache_data
 def read_csv_bytes(data):
     return pd.read_csv(io.BytesIO(data))
- 
- 
+
+
 @st.cache_data
 def demo_data():
     """Synthetic households with a few simulated faults near the end (for trying the page)."""
@@ -40,8 +40,8 @@ def demo_data():
     faulty, _, _ = inject_anomalies(pd.DataFrame(cols, index=idx), events_per_meter=2,
                                     first_step=110 * 48, seed=3)
     return faulty
- 
- 
+
+
 def plot_meter(det, meter, since):
     j = det.columns.index(meter)
     keep = det.index >= since
@@ -53,8 +53,8 @@ def plot_meter(det, meter, since):
                              marker=dict(color="red", size=6)))
     fig.update_layout(height=420, xaxis_title="Time", yaxis_title="Consumption per half-hour")
     return fig
- 
- 
+
+
 # ----------------------------------------------------------------------------
 # 1. Load data
 # ----------------------------------------------------------------------------
@@ -67,9 +67,9 @@ st.info(
     "Privacy: your file is processed in the app's memory for this session and GridGuard does not "
     "store it. This is a public demo, so do not upload confidential data; for private data, run "
     "the app on your own computer.")
- 
+
 use_demo = st.checkbox("Use synthetic example data instead of my own file", value=False)
- 
+
 if use_demo:
     wide, source = demo_data(), "example"
 else:
@@ -98,7 +98,7 @@ else:
         st.error(str(err))
         st.stop()
     source = uploaded.name
- 
+
 try:
     df = prepare(wide)
 except ValueError as err:
@@ -107,7 +107,7 @@ except ValueError as err:
 if df.shape[1] > MAX_METERS:
     st.warning(f"Using the first {MAX_METERS} meters of {df.shape[1]} to keep the app responsive.")
     df = df.iloc[:, :MAX_METERS]
- 
+
 # ----------------------------------------------------------------------------
 # 2. Data quality
 # ----------------------------------------------------------------------------
@@ -126,7 +126,7 @@ if q["missing_pct"] > 5:
 if q["zero_pct"] > 10:
     st.warning("Many zero readings. If these are real faults inside the history period, "
                "GridGuard will learn them as normal and become less sensitive.")
- 
+
 # ----------------------------------------------------------------------------
 # 3. Settings
 # ----------------------------------------------------------------------------
@@ -148,19 +148,19 @@ budget = st.slider("False-alarm budget (alarms per meter per week)", 0.1, 2.0, 0
 cut = int(df.index.searchsorted(pd.Timestamp(cut_date)))
 cut_time = df.index[cut]
 sig = (source, str(cut_date), float(budget))
- 
+
 # ----------------------------------------------------------------------------
 # 4. Detection
 # ----------------------------------------------------------------------------
 st.subheader("Find faulty or tampered readings")
 if st.button("Run detection", type="primary"):
     with st.spinner("Learning normal behaviour and scanning your data..."):
-        guard = GridGuard(model_budget=budget).fit(df.iloc[:cut])
+        guard = GridGuard(model_budget=budget, use_drop_rule=True).fit(df.iloc[:cut])
         det = guard.detect(df.iloc[cut - WARMUP_STEPS:])
         eps = det.episodes()
         eps = eps[eps["end"] >= cut_time].reset_index(drop=True)
     st.session_state["run"] = {"sig": sig, "guard": guard, "det": det, "eps": eps}
- 
+
 run = st.session_state.get("run")
 if run and run["sig"] != sig:
     st.info("Settings changed. Press **Run detection** again to update the results.")
@@ -187,7 +187,7 @@ elif run:
         st.dataframe(guard.report(), width="stretch", hide_index=True)
         st.caption("'Budget met = False' means that component could not reach its false-alarm "
                    "budget on your history, so it is running at its strictest setting.")
- 
+
 # ----------------------------------------------------------------------------
 # 5. Self-benchmark
 # ----------------------------------------------------------------------------
@@ -199,11 +199,11 @@ st.caption(
 if st.button("Estimate accuracy on my data"):
     try:
         with st.spinner("Running the self-test..."):
-            res = self_benchmark(df.iloc[:cut], model_budget=budget)
+            res = self_benchmark(df.iloc[:cut], model_budget=budget, use_drop_rule=True)
         st.session_state["bench"] = {"sig": sig, "res": res}
     except ValueError as err:
         st.warning(str(err))
- 
+
 bench = st.session_state.get("bench")
 if bench and bench["sig"] != sig:
     st.info("Settings changed. Press **Estimate accuracy on my data** again to update.")
@@ -218,11 +218,11 @@ elif bench:
     table.index.name = "fault type"
     st.dataframe(table.rename(columns={"events": "faults tested", "event_recall": "caught",
                                        "typical_delay_h": "typical delay (h)"}), width="stretch")
-    st.caption("Faults that last hours (zero-outs, flat-lines) are usually easiest. Slow changes "
-               "(drift, scale-down) are harder at strict budgets: raise the false-alarm budget to "
-               "catch more of them, at the cost of more false alarms.")
- 
+    st.caption("Faults that last hours (zero-outs, flat-lines) are usually caught fastest. Slow "
+               "changes (drift, scale-down) are caught by a multi-day rule, so they take longer to "
+               "show up (see the delay column). Raise the false-alarm budget to catch more, at the "
+               "cost of more false alarms.")
+
 st.divider()
 st.caption("GridGuard is decision support, not proof of theft. An alert means a meter's readings "
            "look unusual and deserve a check, not that anyone did anything wrong.")
- 
