@@ -152,9 +152,55 @@ else:
                "part of the year and testing on the later part.")
 
 # ----------------------------------------------------------------------------
-# 4. Example and limits
+# 4. Hold-out check
 # ----------------------------------------------------------------------------
-st.header("4. Example detections")
+st.header("4. Does it hold on a different year and different households?")
+h13, h12 = load("holdout_2013.csv"), load("holdout_2012.csv")
+if h13 is None or h12 is None:
+    st.info("The hold-out results have not been generated yet "
+            "(results/holdout_2013.csv and results/holdout_2012.csv).")
+else:
+    st.write(
+        "All settings were **frozen before this run** (false-alarm budget 0.5, 3-day drop window, "
+        "70/30 time split, 3 simulated faults per meter, 3 seeds) and the check was run once. "
+        "The 2012 households are different from the 2013 sample, and the data is from a different year.")
+    on13 = h13[h13["drop_rule"].astype(str) == "True"].iloc[0]
+    on12 = h12[h12["drop_rule"].astype(str) == "True"].iloc[0]
+    e1, e2, e3 = st.columns(3)
+    e1.metric("Faults caught: 2013 sample", f"{on13['event_recall']:.0%}")
+    e2.metric("Faults caught: 2012 hold-out", f"{on12['event_recall']:.0%}",
+              delta=f"{(on12['event_recall'] - on13['event_recall']) * 100:+.0f} points")
+    e3.metric("False alarms per meter-week: 2012 hold-out", f"{on12['false_alarms_clean']:.2f}",
+              delta=f"{on12['false_alarms_clean'] - on13['false_alarms_clean']:+.2f} vs 2013",
+              delta_color="inverse")
+
+    cols = [c for c in ["zero_out", "flatline", "spike", "drift", "scale_down"] if c in h12.columns]
+    fig = go.Figure()
+    fig.add_trace(go.Bar(name=f"2013 sample ({int(on13['meters'])} meters)",
+                         x=[TYPE_LABELS[c] for c in cols], y=[round(on13[c] * 100, 1) for c in cols]))
+    fig.add_trace(go.Bar(name=f"2012 hold-out ({int(on12['meters'])} meters)",
+                         x=[TYPE_LABELS[c] for c in cols], y=[round(on12[c] * 100, 1) for c in cols]))
+    fig.update_layout(barmode="group", height=400, yaxis_title="Faults caught (%)",
+                      title_text="With the sustained-drop rule, budget 0.5")
+    st.plotly_chart(fig, width="stretch")
+
+    both = pd.concat([h13, h12])
+    both["drop_rule"] = both["drop_rule"].astype(str).map({"True": "on", "False": "off"})
+    show = both[["dataset", "meters", "drop_rule", "event_recall", "false_alarms_clean",
+                 "typical_delay_h"] + cols].copy()
+    for c in ["event_recall"] + cols:
+        show[c] = pct(show[c])
+    st.dataframe(show.rename(columns={
+        "dataset": "data", "drop_rule": "drop rule", "event_recall": "faults caught",
+        "false_alarms_clean": "false alarms / meter-week", "typical_delay_h": "typical delay (h)"}),
+        width="stretch", hide_index=True)
+    st.caption("Same code, same settings, same number of meters per run. Whatever the numbers show "
+               "is reported as it came out.")
+
+# ----------------------------------------------------------------------------
+# 5. Example and limits
+# ----------------------------------------------------------------------------
+st.header("5. Example detections")
 image = RESULTS / "example_detections_hybrid.png"
 if image.exists():
     st.image(str(image), caption="Hybrid detector on test households (simulated faults).")
@@ -162,8 +208,9 @@ if image.exists():
 st.header("Limits of this evidence")
 st.markdown(
     "- Faults are **simulated**, not real theft or attacks. Real tampering may look different.\n"
-    "- One city, one year of residential data. A hold-out-year check is planned.\n"
-    "- The drop rule was designed after seeing which faults the first detectors missed, so its gain "
-    "should be confirmed on data it has not seen.\n"
+    "- One city of residential data. The hold-out check uses a different year and different "
+    "households from the same dataset, not a different utility or country.\n"
+    "- The drop rule was designed after seeing which faults the first detectors missed; the hold-out "
+    "check above is the test on data it had not seen.\n"
     "- Spikes and disguised faults are still weakly detected.\n"
     "- GridGuard is decision support, not proof of theft.")
