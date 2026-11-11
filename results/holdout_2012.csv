@@ -1,0 +1,3 @@
+dataset,meters,start,end,budget,drop_rule,event_recall,false_alarms_clean,typical_delay_h,drift,scale_down,spike,zero_out,flatline
+2012,150,2012-01-01,2012-12-30,0.5,False,0.595,0.431,2.5,0.248,0.281,0.43,1.0,1.0
+2012,150,2012-01-01,2012-12-30,0.5,True,0.73,0.464,3.0,0.585,0.659,0.436,1.0,1.0
